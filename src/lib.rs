@@ -23,3 +23,10 @@ pub fn lower(module: &CheckedModule) -> LangResult<Emission> {
 }
 pub const TARGET: &str = "wasm32-freestanding";
 pub const RUST_TARGET: &str = "wasm32-unknown-unknown";
+
+/// Full value/state lowering. The runtime assembles and links the literal C
+/// artifact with the shared primitive ABI for wasm32; no AST is embedded.
+pub fn lower_complete(module: &CheckedModule) -> LangResult<ink_lowering_c::complete::Emission> {
+    ink_lowering_c::complete::lower(module)
+}
+pub const VALUE_ABI: &str = "ink-values-v1";
