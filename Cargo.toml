@@ -3,3 +3,6 @@ name = "ink-lowering-wasm"
 version = "0.1.0"
 edition = "2021"
 publish = false
+[dependencies]
+ink-core = { git = "https://github.com/siliconjungle/ink-lang", rev = "f688079b78dcd740a42cf1655fec9629c862bf69" }
+ink-lowering-c = { git = "https://github.com/siliconjungle/ink-lowering-c", rev = "be4d1aab5045e4a39d9fd1777883693c6dcec2e8" }

@@ -1,17 +1,5 @@
-# Ink WebAssembly adapter
+# Ink WebAssembly lowering
 
-The existing single-threaded host ABI for Ink's generated Rust state programs.
-`STATE_ABI` supplies the adapter source; the Ink distribution appends it when
-`emit-state --wasm-abi` is requested. The ABI is documented in ink-lang's
-`docs/wasm-abi.md` and exercised by its native/Wasm interchange tests.
+WebAssembly target configuration and checked pure C lowering for Ink. `lower(&CheckedModule)` returns C and the required export symbols; `TARGET` selects the portable Zig/LLVM Wasm target. The shared `ink-runtime` invokes the toolchain and owns browser host ABIs, CPU fallback assembly and state host support.
 
-This is an adapter package, not a direct Wasm code generator. Rust/LLVM currently
-emits wasm32-unknown-unknown; pure C programs use the C target toolchain. Neither
-Ink's core nor its Rust emitter depends on this adapter. A direct Wasm backend
-can later consume the same checked program boundary.
-
-No WebGPU or wgpu implementation is claimed here.
-
-Part of the personal siliconjungle Ink repositories. The distribution pins this
-repository as a submodule. Core schema/toolchain compatibility must be explicit;
-repository identities do not establish correctness.
+Pure programs compile through C/LLVM. State programs compile through the Rust backend and LLVM's wasm32 target; their host adapter is runtime-owned. This package adds no optimisation or proof authority. The checked semantic core, literal emission, target toolchains and physical ABI remain trusted.
