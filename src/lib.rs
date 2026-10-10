@@ -5,11 +5,20 @@ pub struct Emission {
     pub exports: Vec<String>,
 }
 pub fn lower(module: &CheckedModule) -> LangResult<Emission> {
+    lower_with_abi(module, ink_core::compute_values::needed(module.pure_program()?))
+}
+/// Explicit physical ABI configuration for bundles assembled by the runtime.
+pub fn lower_with_abi(module: &CheckedModule, packed: bool) -> LangResult<Emission> {
     let p = module.pure_program()?;
-    let c = ink_lowering_c::native::emit(p)?;
-    let exports = if ink_core::compute_values::needed(p) {
+    let c = if packed { ink_lowering_c::compute::emit_c(p)? } else { ink_lowering_c::native::emit(p)? };
+    let exports = if packed {
         vec![
             "ink_compute_call".into(),
+            "ink_compute_into".into(),
+            "ink_compute_mark".into(),
+            "ink_compute_rewind".into(),
+            "ink_compute_scalar32".into(),
+            "ink_compute_scalar64".into(),
             "ink_compute_reset".into(),
             "ink_alloc".into(),
         ]
