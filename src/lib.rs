@@ -30,3 +30,10 @@ pub fn lower_complete(module: &CheckedModule) -> LangResult<ink_lowering_c::comp
     ink_lowering_c::complete::lower(module)
 }
 pub const VALUE_ABI: &str = "ink-values-v1";
+
+/// Complete selected programs retain the original checked snapshot namespace.
+pub fn lower_complete_selected(
+    selected: &ink_core::optimisation::CheckedSelection,
+) -> LangResult<ink_lowering_c::complete::Emission> {
+    ink_lowering_c::complete::lower_selected(selected)
+}

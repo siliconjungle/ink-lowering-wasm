@@ -6,3 +6,8 @@ Complete pure/stateful programs compile through literal C and shared Rust primit
 
 Current complete execution coverage, GPU exclusions and integration evidence are documented in the [lowering parity contract](https://github.com/siliconjungle/ink-lang/blob/main/docs/lowering-parity.md).
 `lower_complete` describes the complete C primitive-ABI target. The runtime assembles and compiles shared primitives and supplies lifecycle/buffer hosts. Packed pure emission remains an explicit separate ABI.
+
+`lower_complete_selected(&CheckedSelection)` delegates to the selected complete
+C emitter, retaining the original checked checkpoint namespace. Runtime-owned
+C/Rust Wasm host assembly uses that namespace; target configuration grants no
+proof or checkpoint identity authority of its own.
