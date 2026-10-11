@@ -40,9 +40,19 @@ pub fn lower_complete(module: &CheckedModule) -> LangResult<ink_lowering_c::comp
 }
 pub const VALUE_ABI: &str = "ink-values-v1";
 
+/// Literal constructor definitions share C semantics and resource bounds.
+pub fn lower_definition(checked: &ink_core::definition::CheckedDefinition) -> LangResult<ink_lowering_c::definition::Emission> {
+    ink_lowering_c::definition::lower(checked)
+}
+
 /// Complete selected programs retain the original checked snapshot namespace.
 pub fn lower_complete_selected(
     selected: &ink_core::optimisation::CheckedSelection,
 ) -> LangResult<ink_lowering_c::complete::Emission> {
     ink_lowering_c::complete::lower_selected(selected)
+}
+
+/// Standalone recursive representations execute in the literal C/native host lane.
+pub fn lower_representation(checked: &ink_core::representation::CheckedRepresentation) -> LangResult<ink_lowering_c::representation_program::Emission> {
+    ink_lowering_c::representation_program::lower(checked)
 }
