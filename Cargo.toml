@@ -5,4 +5,4 @@ edition = "2021"
 publish = false
 [dependencies]
 ink-core = { git = "https://github.com/siliconjungle/ink-lang", rev = "df73ab02dab69de6d23c6c4850661757ec53a2a6" }
-ink-lowering-c = { git = "https://github.com/siliconjungle/ink-lowering-c", rev = "a0c2b6cc40d9191a4fcdfdeeb4a23b2487afcdaf" }
+ink-lowering-c = { git = "https://github.com/siliconjungle/ink-lowering-c", rev = "e1e951b047d8898700048bb2110b184d2f3760b0" }
