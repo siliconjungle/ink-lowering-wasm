@@ -5,12 +5,19 @@ pub struct Emission {
     pub exports: Vec<String>,
 }
 pub fn lower(module: &CheckedModule) -> LangResult<Emission> {
-    lower_with_abi(module, ink_core::compute_values::needed(module.pure_program()?))
+    lower_with_abi(
+        module,
+        ink_core::compute_values::needed(module.pure_program()?),
+    )
 }
 /// Explicit physical ABI configuration for bundles assembled by the runtime.
 pub fn lower_with_abi(module: &CheckedModule, packed: bool) -> LangResult<Emission> {
     let p = module.pure_program()?;
-    let c = if packed { ink_lowering_c::compute::emit_c(p)? } else { ink_lowering_c::native::emit(p)? };
+    let c = if packed {
+        ink_lowering_c::compute::emit_c(p)?
+    } else {
+        ink_lowering_c::native::emit(p)?
+    };
     let exports = if packed {
         vec![
             "ink_compute_call".into(),
@@ -38,7 +45,7 @@ pub const RUST_TARGET: &str = "wasm32-unknown-unknown";
 pub fn lower_complete(module: &CheckedModule) -> LangResult<ink_lowering_c::complete::Emission> {
     ink_lowering_c::complete::lower(module)
 }
-pub const VALUE_ABI: &str = "ink-values-v1";
+pub const VALUE_ABI: &str = ink_abi::VALUE_ABI;
 
 /// Complete selected programs retain the original checked snapshot namespace.
 pub fn lower_complete_selected(

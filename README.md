@@ -11,3 +11,8 @@ Current complete execution coverage, GPU exclusions and integration evidence are
 C emitter, retaining the original checked checkpoint namespace. Runtime-owned
 C/Rust Wasm host assembly uses that namespace; target configuration grants no
 proof or checkpoint identity authority of its own.
+
+All targets consume [ink-abi](https://github.com/siliconjungle/ink-abi) for shared
+type/layout contracts. Early termination, owned-buffer transforms and helper
+unfolding are checked database choices. The backend emits the resulting general
+operations literally; it does not infer those transformations from source patterns.
