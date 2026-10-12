@@ -16,3 +16,8 @@ All targets consume [ink-abi](https://github.com/siliconjungle/ink-abi) for shar
 type/layout contracts. Early termination, owned-buffer transforms and helper
 unfolding are checked database choices. The backend emits the resulting general
 operations literally; it does not infer those transformations from source patterns.
+
+## License
+
+Project code and documentation are [MIT licensed](LICENSE). Third-party dependencies,
+vendored projects and research data retain their own licenses and notices.
