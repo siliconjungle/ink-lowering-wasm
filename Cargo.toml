@@ -5,8 +5,8 @@ version = "0.1.0"
 edition = "2021"
 publish = false
 [dependencies]
-ink-abi = { git = "https://github.com/siliconjungle/ink-abi", rev = "94f57172a40635025253fc4c3710323a968d08c4" }
-ink-core = { git = "https://github.com/siliconjungle/ink-lang", rev = "96cf06db81e083ba39c34dbe216a96def7a15bfa" }
-ink-lowering-c = { git = "https://github.com/siliconjungle/ink-lowering-c", rev = "0288e79e71aa7efbf70f529e0bd43435a1b1b394" }
+ink-abi = { git = "https://github.com/siliconjungle/ink-abi", rev = "90a7a93c6be095cb906601ec2b40c8a1467adbdf" }
+ink-core = { git = "https://github.com/siliconjungle/ink-lang", rev = "41d21d6cae1148ca784f1cdc567cbe436ab77c58" }
+ink-lowering-c = { git = "https://github.com/siliconjungle/ink-lowering-c", rev = "dcbdb61e17e504f1dcf8093c92aeb6b1ff227e59" }
 
 [workspace]
