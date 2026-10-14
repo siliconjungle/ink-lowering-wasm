@@ -7,7 +7,7 @@ pub const RUST_TARGET: &str = "wasm32-unknown-unknown";
 pub const VALUE_ABI: &str = ink_abi::VALUE_ABI;
 pub fn lower(module: &CheckedModule) -> LangResult<Emission> {
     Ok(Emission {
-        rust: ink_lowering_rust::state_native::emit(module.program())?,
+        rust: ink_lowering_rust::state_native::emit_checked(module)?,
     })
 }
 pub fn lower_with_abi(module: &CheckedModule, packed: bool) -> LangResult<Emission> {
@@ -16,7 +16,7 @@ pub fn lower_with_abi(module: &CheckedModule, packed: bool) -> LangResult<Emissi
     })
 }
 pub fn lower_complete(module: &CheckedModule) -> LangResult<String> {
-    ink_lowering_rust::state_native::emit(module.program())
+    ink_lowering_rust::state_native::emit_checked(module)
 }
 pub fn lower_complete_selected(
     selected: &ink_core::optimisation::CheckedSelection,
