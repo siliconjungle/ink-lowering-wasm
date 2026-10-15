@@ -5,8 +5,8 @@ version = "0.1.0"
 edition = "2021"
 publish = false
 [dependencies]
-ink-lowering-rust = { git = "https://github.com/siliconjungle/ink-lowering-rust", rev = "336b0015dca04629bde7f3ca72ecf293fe831341" }
+ink-lowering-rust = { git = "https://github.com/siliconjungle/ink-lowering-rust", rev = "7cc1d39a6c5903fc97fa154adba3380936e8c233" }
 ink-abi = { git = "https://github.com/siliconjungle/ink-abi", rev = "5c74c999f0852fe9f582311401f0d51905044356" }
-ink-core = { git = "https://github.com/siliconjungle/ink-lang", rev = "bb9bc5528abc614c401f71d23097057b823e428d" }
+ink-core = { git = "https://github.com/siliconjungle/ink-lang", rev = "3fd159410f4e9d688cfe1f5ce62a798eb0614ebb" }
 
 [workspace]
